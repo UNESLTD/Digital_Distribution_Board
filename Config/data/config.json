@@ -1,0 +1,20 @@
+{
+	"firstName":"fname",
+	"middleName":"mname",
+	"lastName":"lname",	
+	"email":"valid@mail.com",
+	"phone":"0712345678",
+	"dateOfBirth":"yyymmdd",
+	"country":"kenya",
+	"county":"kiambu",
+	"town":"thika",
+	"road":"stadium road",
+	"streetAddress":"along stadium road eveready biulding",
+	"countyCode":"+254",
+	"postalCode":"01000",
+	"postalAddress":"7903 0-1000",
+	"serialNumber":"1234",
+	"meterNumber":"1234",
+	"longitude":"11111",
+	"latitude":"111111"
+}

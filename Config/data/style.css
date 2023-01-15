@@ -1,0 +1,779 @@
+/* 
+DIGITAL DISTRIBUTION BOARD VERSION 1.0
+CSS
+TABLE OF CONTENTS
+1. Main site settings
+	1.1 Boot up
+		1.1.1 WiFiLiblary Manager
+		1.1.2 Authentication
+		1.1.3 Action
+2. Navigation Bar
+	2.1 topnav
+	2.2 topnav-a
+3. Badges
+	1.1 row
+	1.2 column
+	1.3 card
+4. Main Content
+	3.1 tabs
+	3.2 accordion
+	3.3 modal boxes
+5. Footer
+	4.1 footer
+	4.2 footer-ul
+	4.3 footer-li
+	4.4 footer-a
+	4.5 footer-icon
+	4.6 footer-text
+*/
+
+*{
+	margin: 0;
+	padding: 0;
+	box-shadow: border-box;
+	font-family: sans-serif;
+	box-sizing: border-box;
+}
+:root{
+  --install_bg: black;
+  --install_cl: rgb(252, 146, 7);
+	--bg: #fff;
+	--kt: rgb(252, 146, 7);
+	--box_shadow: rgba(0, 0, 0, 0.4);
+	--action: rgba(0, 0, 0, 0.9);
+	--clr:#f2f2f2;
+}
+body{
+	background-image: url(bg.png);
+}
+/* INSTALLTION WINDOW */
+/* Center the image and position the close button */
+.loadWindow {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--action);
+  padding-top: 50px;
+}
+.pre-loader{
+  padding-top: 100px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: none;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid var(--kt);
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.installIcon {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+  color: var(--kt);
+}
+
+.alert {
+  display: none;
+  float: right;
+  padding: 20px;
+  color: white;
+  margin: 20px;
+  border-radius: 8px;
+  position: fixed;
+  top: 35px;
+  max-width: 100%;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.installIcon img.avatar {
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+}
+
+.installContainer {
+  padding: 16px;
+}
+
+.installFooter {
+  padding: 16px;
+  background-color: white;
+}
+.installFooter .button-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.installFooter .button-group .startBtn{
+  width: 80%;
+  padding: 10px;
+  border-style: none;
+  background-color: var(--kt);
+  border-radius: 8px;
+
+}
+
+/* The Modal (background) */
+.installationWndow {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--install_bg); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.installationWndow-content {
+  background-color: #fefefe;
+  margin: 1% auto 1% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+/* INSTALLATION TABS */
+/* Hide all steps by default: */
+.installTab {
+  display: none;
+}
+
+.installTab input {
+  margin: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid var(--kt);
+  border-radius: 8px;
+  outline: none;
+  text-align: center;
+}
+
+/* Mark input boxes that gets an error on validation: */
+.installTab input.invalid {
+  background-color: red;
+}
+
+.startBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--kt);
+  color: var(--bg);
+}
+
+.nextBtn{
+  margin: 5px;
+  padding: 10px;
+  width: 30%;
+  background-color: var(--kt);
+  color: var(--bg);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+}
+
+.prevBtn {
+  margin: 5px;
+  padding: 10px;
+  width: 30%;
+  background-color: var(--kt);
+  color: var(--bg);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: var(--kt);
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: var(--kt);
+}
+/* END INSTALLATION TABS */
+/* END INSTALLATION WINDOW */
+
+.online{
+	display: relative;
+}
+/* TOP NAVIGATION BAR */
+.navigation {
+  overflow: hidden;
+  background-color: var(--bg);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 0.75px 8px 0 var(--box_shadow);
+}
+.navigation p {
+  padding: 10px;
+  color: var(--kt);
+  text-decoration: none;
+}
+.navigation ul {
+  float: right;
+  color: var(--bg);
+  text-align: center;
+  padding: 5px 5px;
+  text-decoration: none;
+  font-size: 17px;
+}
+/* ./TOP NAVIGATION BAR */
+/* BADGES */
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+.column_center{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  padding: 0 10px;
+}
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+  .column_center {
+    width: 33.33%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+  padding: 16px;
+  text-align: center;
+  color: var(--kt);
+  background-color: var(--bg);
+  border-radius: 16px;
+}
+.card_center{
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+  padding: 16px;
+  text-align: center;
+  color: var(--kt);
+  background-color: var(--bg);
+  border-radius: 16px;
+}
+/* ./BADGES */
+hr{
+	opacity: 25%;
+}
+
+/* SWITCHES */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--clr);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--kt);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--kt);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/* ./SWITCHES */
+
+/* MAIN CONTENT */
+.content {
+	padding: 16px;
+	margin-top: 30px;
+	margin-bottom: 70px;
+	height: auto;
+	display: block;
+}
+/* Style the tab content */
+.tab {
+	width: 100%;
+	color: var(--kt);
+	display: none;
+	padding: 5px;
+	text-align: center;
+}
+.mainSupply{
+	padding: 10px;
+}
+.slaveSupply{
+	padding: 10px;
+}
+.balancedLoad{
+	padding: 10px;
+	border-radius: 8px;
+}
+.balancedLoadItem{
+	box-shadow: 0 4px 8px 0 var(--box_shadow);
+}
+/* INDUCTIVE lOADS */
+.LStatusBar{
+  margin: 50px;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+  padding: 16px;
+  color: var(--kt);
+  background-color: var(--bg);
+  border-radius: 16px;
+}
+.LSColumn{
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  border-right-style: solid;
+}
+/* ./INDUCTIVE LOAD */
+
+/* SETTINGS TAB */
+/* Style the tab */
+.settingsTab {
+  float: left;
+  background-color: var(--bg);
+  width: 20%;
+  height: 300px;
+  margin-bottom: 70px;
+  margin-right: 10%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+}
+
+/* Style the buttons inside the tab */
+.settingsTab button {
+  display: block;
+  background-color: var(--bg);
+  color: black;
+  padding: 10px 16px;
+  width: 100%;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+  color: var(--kt);
+  border: none;
+  border-radius: 8px;
+}
+
+/* Change background color of buttons on hover */
+.settingsTab button:hover {
+	color: var(--kt);
+	font-weight: 400;
+	font-size: 18px;
+	transition: 0.3s;
+}
+
+/* Create an active/current "tab button" class */
+.settingsTab button.active {
+  background-color: var(--kt);
+  color: var(--bg);
+  text-align: center;
+  font-weight: 400;
+  font-size: 24px;
+  transition: 0.3s;
+}
+
+/* Style the tab content */
+.settingsTabContent {
+  float: left;
+  padding: 5px 5px;
+  border: none;
+  width: 70%;
+  border-left: none;
+  height: auto;
+  background-color: var(--bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+  margin-bottom: 78px;
+}
+.settingsTabContent table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  overflow-x:auto;
+  background-color: white;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+tr:nth-child(even) {
+  background-color: white;
+}
+/* ./SETTINGS TAB */
+/* ./TOP MAIN CONTENT */
+/* ACCORDIONS */
+.accordion {
+  background-color: var(--bg);
+  color: var(--kt);
+  cursor: pointer;
+  padding: 18px;
+  margin-top: 50px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+/* ./ACCORDION */
+
+/* ACTION */
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: var(--bg);
+  color: var(--kt);
+  border-style: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+	background-color: var(--kt);
+	border: none;
+	color: var(--bg);
+	border-radius: 8px;
+	box-shadow: 0 4px 8px 0 var(--box_shadow);
+}
+
+/* Add padding and center-align text to the container */
+.actionContainer {
+  padding: 16px;
+  text-align: center;
+}
+.actionContainerHeader{
+	padding: 16px;
+	color: var(--kt);
+}
+/* The Modal (background) */
+.actionWindow {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--action);
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.actionWindowContent {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: none;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 50%;
+  border-radius: 16px;
+}
+/* Style the horizontal ruler */
+
+/* Clear floats */
+.button-group::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+     width: 100%;
+  }
+}
+/* ./ACTION */
+
+/* FOOTER */
+.footer-menu{
+	left: auto;
+	width: 100%;
+	height: 70px;
+	background: var(--bg);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 0px;
+  box-shadow: 0 4px 8px 0 var(--box_shadow);
+}
+.footer-menu ul{
+	padding: 0;
+	margin: 0;
+	display: flex;
+	width: 350px;
+}
+.footer-menu ul li{
+	padding: 0;
+	margin: 0;
+	position: relative;
+	list-style: none;
+	width: 70px;
+	height: 70px;
+	z-index: 1;
+}
+.footer-menu ul li img{
+	padding: 5;
+	margin: 5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.footer-menu ul li a{
+	padding: 0;
+	margin: 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	text-align: center;
+	font-weight: 500;
+	outline: none;
+}
+.footer-menu ul li a .icon{
+	padding: 5px;
+	margin: 0;
+	position: relative;
+	display: block;
+	line-height: 75px;
+	font-size: 1.5em;
+	text-align: center;
+	transition: 0.5s;
+	color: rgb(252, 146, 7);
+  border-radius: 50%;
+}
+.footer-menu ul li.active a .icon{
+	transform: translateY(-33px);
+}
+.footer-menu ul li:hover a .icon{
+	transform: translateY(-35px);
+}
+.footer-menu ul li a .text{
+	position: absolute;
+	color: rgba(0, 0, 0, 0.342);
+	font-weight: 400;
+	font-size: 0.55;
+	letter-spacing: 0.05em;
+	transition: 0.1s;
+	opacity: 0;
+	transform: translateY(20px);
+	text-align: center;
+}
+.footer-menu ul li.active a .text{
+	opacity: 1;
+	transform: translateY(10px);
+}
+.Indicator{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: -50%;
+	width: 70px;
+	height: 70px;
+	background: var(--bg);
+	border-radius: 50%;
+	border: 2.5px solid var(--kt);
+	transition: 0.5s;
+	box-shadow: 0 4px 10px 0 var(--box_shadow);
+}
+.Indicator::before{
+	padding: 0px;
+	margin: 0px;
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -22px;
+	height: 20px;
+	width: 20px;
+	background: transparent;
+	border-top-right-radius: 20px;
+	box-shadow: 0px -10px 0 0 none;
+}
+.Indicator::after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: -22px;
+	height: 20px;
+	width: 20px;
+	background: transparent;
+	border-top-left-radius: 20px;
+	box-shadow: 0px -10px 0 0 none;
+}
+.footer-menu ul li:nth-child(1).active ~ .Indicator{
+	transform: translateX(calc(70px * 0));
+}
+.footer-menu ul li:nth-child(2).active ~ .Indicator{
+	transform: translateX(calc(70px * 1));
+}
+.footer-menu ul li:nth-child(3).active ~ .Indicator{
+	transform: translateX(calc(70px * 2));
+}
+.footer-menu ul li:nth-child(4).active ~ .Indicator{
+	transform: translateX(calc(70px * 3));
+}
+.footer-menu ul li:nth-child(5).active ~ .Indicator{
+	transform: translateX(calc(70px * 4));
+}

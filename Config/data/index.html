@@ -1,9 +1,826 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Umeme Networks</title>
-</head>
+	<head>
+		<title>Digital Distribution Board</title>
+		<!-- Device Viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Main Site Styling -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
 <body>
-<!--  -->
+<section id="loadWindow" class="loadWindow">
+	<div class="pre-loader">
+  		<div class="loader" id="loader">
+  			
+  		</div>
+
+  	</div><p style="color: white; text-align: center; margin: 10px;" id="loaderTXT"></p>
+</section>
+<section class="BOOT-UP">
+	<!-- INSTALLTION LIBLARY -->
+	<!-- Installation Window -->
+	<div id="installationWindow" class="installationWndow">	    
+	    <!-- Installation Container -->
+	    <div class="installationWndow-content animate">
+	    	<!-- Installation Icon -->
+		    <div class="installIcon">
+		      <img src="logo.png" alt="Umeme Kenya" class="avatar">
+		      <h1 id="installIconH1"></h1>
+		      <p id="installIconP"></p>
+		    </div>
+	      <!-- Installation Form -->
+	      <form class="installContainer" action="/action_page.php" method="post" onsubmit="submitInstall()" id="installForm">
+	        <div class="installTab">
+	        	<h2 id="welcomeTabH2"></h2>
+	        	<p id="welcomeTabP"></p>
+		  </div>
+		  <div class="installTab">
+		    <p> <h3 style="color: var(--kt);">Customer Details</h3>
+				<input placeholder="First Name" oninput="this.className = ''" name="">
+				<input placeholder="Email" oninput="this.className = ''" name="">
+				<input placeholder="Phone Number" oninput="this.className = ''" name="">
+			</p>
+		  </div>
+		  <div class="installTab"><h3 style="color: var(--kt);">Property Details:</h3>
+		    <p>
+				<input placeholder="Meter Number" oninput="this.className = ''" name="email">
+				<input placeholder="Physical Address" oninput="this.className = ''" name="email">
+				<input placeholder="Home Phone Number" oninput="this.className = ''" name="email">
+			</p>
+		  </div>
+		  <div class="installTab"><h3 style="color: var(--kt);">Login Information:</h3>
+		    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
+		    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+		  </div>
+			<div class="installTab">
+			  	
+			</div>
+	      </form>
+	      <div class="installFooter">
+	      	<div style="overflow:auto;">
+		    <div class="button-group">
+		    	<button type="button" class="startBtn" id="startBtn" onclick="nextPrev(1)" form="installForm">START</button>
+				<button type="button" class="prevBtn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+				<button type="button" class="nextBtn" id="nextBtn" onclick="nextPrev(1)">Next</button>
+		    </div>
+		  </div>
+		  <!-- Circles which indicates the steps of the form: -->
+		  <div style="text-align:center;margin-top:40px;" id="installSteps">
+		    <span class="step"></span>
+		    <span class="step"></span>
+		    <span class="step"></span>
+		    <span class="step"></span>
+		  </div>
+	    </div>
+	    </div>    
+	</div>
+	<!-- ./INSTALLTION LIBLARY -->
+	<!-- AUTHENTICATION -->
+	<div class="authenticationWindow">
+		
+	</div>
+	<!-- ./AUTHENTICATION -->
+	<!-- ACTION -->
+	<div class="">		
+		<div>
+			<div id="window" class="actionWindow">
+			  <form class="actionWindowContent" action="/action_page.php">
+			    <div class="actionContainer">
+			    	<div class="actionContainerHeader">
+			    		<h1 id="actionH1"></h1>
+			    		<p id="actionP"></p>
+			    		<input type="hidden" id="btnVal">
+			    		<input type="hidden" id="btnId">
+			    	</div>
+				    <div class="button-group">
+					    <button id="cancel" type="button" onclick="execute(0)" class="cancelbtn">Cancel</button>
+					    <button type="button" onclick="execute(1)" class="deletebtn" id="btnConfirm">Confirm</button>
+				    </div>
+			    </div>
+			  </form>
+			</div>
+		</div>		
+	</div>
+	<!-- ./ACTION -->	
+</section>
+<!-- ./BOOTUP -->
+<section class="online">
+<!-- Navigation Bar -->
+	<nav class="navigation">
+		<p><b>Umeme Networks</b></p>
+	</nav>
+<!-- ./Navigation Bar -->
+<!-- COLUMN CARDS -->
+<section class="badges">
+	
+</section>
+<!-- ./COLUMN CARDS -->
+<!-- Main Content -->
+<section class="content">	
+	<!-- Menu Tabs-->
+	<div id="inductiveLoads" class="tab">
+		<h1>Inductive Loads</h1>
+		<p>#pamoja_Tunaimarika</p>
+		<div class="mainSupply">
+			<div class="row">
+				<div class="column">
+					<div class="card">
+					<h3 id="ILN1"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="ILMV1"></small> V<br>
+							Max Current: <small id="ILMC1"></small> A<br>
+							<input type="hidden" id="ILS1">
+							<br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+								<input id="inductiveBtnOne" type="checkbox" onclick="initialize('201', 'inductiveBtnOne')">
+								<span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="ILN2"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="ILMV2"></small> V<br>
+							Max Current: <small id="ILMC2"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="inductiveBtnTwo" type="checkbox" onclick="initialize('202', 'inductiveBtnTwo')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="ILN3"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="ILMV3"></small> V<br>
+							Max Current: <small id="ILMC3"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="inductiveBtnThree" type="checkbox" onclick="initialize('203', 'inductiveBtnThree')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="ILN4"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="ILMV4"></small> V<br>
+							Max Current: <small id="ILMC4"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="inductiveBtnFour" type="checkbox" onclick="initialize('204', 'inductiveBtnFour')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="LStatusBar">
+				<div class="row">
+					<div class="LSColumn">
+						<h4 id="ilsh1"></h4>
+						<small>Operating Status</small>: <small id="ilos1"></small><br>
+						<p id="ilsw" style="display: none;">
+							<small>Operating Voltage</small>: <small id="ilov1"></small><br>
+							<small>Operating Current</small>: <small id="iloc1"></small><br>
+							<small>Operating Power</small>: <small id="ilop1"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="ilsh2"></h4>
+						<small>Operating Status</small>: <small id="ilos2"></small><br>
+						<p id="ilsw2" style="display: none;">
+							<small>Operating Voltage</small>: <small id="ilov2"></small><br>
+							<small>Operating Current</small>: <small id="iloc2"></small><br>
+							<small>Operating Power</small>: <small id="ilop2"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="ilsh3"></h4>
+						<small>Operating Status</small>: <small id="ilos3"></small><br>
+						<p id="ilsw3" style="display: none;">
+							<small>Operating Voltage</small>: <small id="ilov3"></small><br>
+							<small>Operating Current</small>: <small id="iloc3"></small><br>
+							<small>Operating Power</small>: <small id="ilop3"></small><br>
+						</p>
+					</div>
+					<div class="column">
+						<h4 id="ilsh4"></h4>
+						<small>Operating Status</small>: <small id="ilos4"></small><br>
+						<p id="ilsw4" style="display: none;">
+							<small>Operating Voltage</small>: <small id="ilov4"></small><br>
+							<small>Operating Current</small>: <small id="iloc4"></small><br>
+							<small>Operating Power</small>: <small id="ilop4"></small><br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="thermalLoads" class="tab">
+		<h1>Thermal Loads</h1>
+		<p>#pamoja_Tunaimarika</p>
+		<div class="mainSupply">
+			<div class="row">
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN1"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV1"></small> V<br>
+							Max Current: <small id="TLMC1"></small> A<br>
+							<input type="hidden" id="TLS1">
+							<br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+								<input id="thermalBtnOne" type="checkbox" onclick="initialize('301', 'thermalBtnOne')">
+								<span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN2"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV2"></small> V<br>
+							Max Current: <small id="TLMC2"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="thermalBtnTwo" type="checkbox" onclick="initialize('302', 'thermalBtnTwo')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN3"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV3"></small> V<br>
+							Max Current: <small id="TLMC3"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="thermalBtnThree" type="checkbox" onclick="initialize('303', 'thermalBtnThree')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN4"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV4"></small> V<br>
+							Max Current: <small id="TLMC4"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="thermalBtnFour" type="checkbox" onclick="initialize('304', 'thermalBtnFour')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="LStatusBar">
+				<div class="row">
+					<div class="LSColumn">
+						<h4 id="tlsh1"></h4>
+						<small>Operating Status</small>: <small id="tlos1"></small><br>
+						<p id="tlsw" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov1"></small><br>
+							<small>Operating Current</small>: <small id="tloc1"></small><br>
+							<small>Operating Power</small>: <small id="tlop1"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="tlsh2"></h4>
+						<small>Operating Status</small>: <small id="tlos2"></small><br>
+						<p id="tlsw2" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov2"></small><br>
+							<small>Operating Current</small>: <small id="tloc2"></small><br>
+							<small>Operating Power</small>: <small id="tlop2"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="tlsh3"></h4>
+						<small>Operating Status</small>: <small id="tlos3"></small><br>
+						<p id="tlsw3" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov3"></small><br>
+							<small>Operating Current</small>: <small id="tloc3"></small><br>
+							<small>Operating Power</small>: <small id="tlop3"></small><br>
+						</p>
+					</div>
+					<div class="column">
+						<h4 id="tlsh4"></h4>
+						<small>Operating Status</small>: <small id="tlos4"></small><br>
+						<p id="tlsw4" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov4"></small><br>
+							<small>Operating Current</small>: <small id="tloc4"></small><br>
+							<small>Operating Power</small>: <small id="tlop4"></small><br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="homeSettings" class="tab">		
+	  <div>
+	  	<div class="settingsTab">
+			<button class="settingsTabLinks" onclick="openSettingsTab(event, 'home-tab')" id="defaultOpen">CCU</button>
+			<button class="settingsTabLinks" onclick="openSettingsTab(event, 'network-tab')">Network</button>
+			<button class="settingsTabLinks" onclick="openSettingsTab(event, 'Tokyo')"></button>
+			<button class="settingsTabLinks" onclick="openSettingsTab(event, 'WiFi')" id="defaultOpen"></button>
+			<button class="settingsTabLinks" onclick="openSettingsTab(event, 'Paris')"></button>
+			<button class="settingsTabLinks" onclick="openSettingsTab(event, 'Tokyo')"></button>
+		</div>
+		<div id="home-tab" class="settingsTabContent animate">
+			<h3>Intake Point</h3>
+			<p></p><br>			
+    		<div style="overflow-x:auto; margin: 5px;">
+    			<table id="table">
+				  <tr>
+				    <th>Circuit Breaker</th>
+				    <th>Rating (s)</th>
+				    <th>Action</th>
+				  </tr>
+				  <tr>
+				    <td>Main Switch</td>
+				    <td id="sostatus">
+				    	<small>
+				    		<b>240</b> V, <b>80</b>A
+				    	</small>
+				    </td>
+				    <td>
+				    	<div style="float: right;">
+				    		<form id="">
+								<label class="switch">
+								  <input id="main_switch" type="checkbox" onclick="initialize('100', 'main_switch')">
+								  <span class="slider round"></span>
+								</label>
+							</form>
+			    		</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td>Inductive Load (s)</td>
+				    <td>
+				    	<small>
+				    		<b>240</b> V, <b>35</b>A
+				    	</small>
+				    </td>
+				    <td>
+				    	<div style="float: right;">
+				    		<form id="">
+								<label class="switch">
+								  <input id="inductive_load" type="checkbox" onclick="initialize('101', 'inductive_load')">
+								  <span class="slider round"></span>
+								</label>
+							</form>
+			    		</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td>Thermal Load (s)</td>
+				    <td>
+				    	<small>
+				    		<b>240</b> V, <b>35</b>A
+				    	</small>
+				    </td>
+				    <td>
+				    	<div style="float: right;">
+				    		<form id="">
+								<label class="switch">
+								  <input id="thermal_load" type="checkbox" onclick="initialize('102', 'thermal_load')">
+								  <span class="slider round"></span>
+								</label>
+							</form>
+			    		</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td>Appliance's</td>
+				    <td>
+				    	<small>
+				    		<b>240</b> V, <b>16</b>A
+				    	</small>
+				    </td>
+				    <td>
+				    	<div style="float: right;">
+				    		<form id="">
+								<label class="switch">
+								  <input id="appliance" type="checkbox" onclick="initialize('103', 'appliance')">
+								  <span class="slider round"></span>
+								</label>
+							</form>
+			    		</div>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td>Lighting</td>
+				    <td>
+				    	<small>
+				    		<b>240</b> V, <b>6</b>A
+				    	</small>
+				    </td>
+				    <td>
+				    	<div style="float: right;">
+				    		<form id="">
+								<label class="switch">
+								  <input id="lighting" type="checkbox" onclick="initialize('104', 'lighting')">
+								  <span class="slider round"></span>
+								</label>
+							</form>
+			    		</div>
+				    </td>
+				  </tr>
+				</table>
+    		</div>
+		</div>
+
+		<div id="network-tab" class="settingsTabContent animate">
+			<h3>Networks Settings</h3>
+			<p>SSd settings and password</p> 
+			<div style="overflow-x:auto; margin: 5px;">
+    			<table id="table">
+				  <tr>
+				    <th>Network</th>
+				    <th>Status</th>
+				    <th>IpV4</th>
+				  </tr>
+				  <tr>
+				    <td>Master</td>
+				    <td id="sostatus">On</td>
+				    <td>198.162.98.101</td>
+				  </tr>
+				  <tr>
+				    <td>Slave</td>
+				    <td>Jackson</td>
+				    <td>94</td>
+				  </tr>
+				  <tr>
+				    <td>Clients</td>
+				    <td>1</td>
+				    <td>
+
+				    </td>
+				  </tr>
+				</table>
+    		</div>
+		</div>
+		<div id="Tokyo" class="settingsTabContent animate">
+			<h3>Tokyo</h3>
+			<p>Tokyo is the capital of Japan.</p>
+
+		</div>
+		<div id="London" class="settingsTabContent animate">
+			<h3>London</h3>
+			<p>London is the capital city of England.</p>
+		</div>
+
+		<div id="Paris" class="settingsTabContent animate">
+			<h3>Paris</h3>
+			<p>Paris is the capital of France.</p> 
+		</div>
+		<div id="Tokyo" class="settingsTabContent animate">
+			<h3>Tokyo</h3>
+			<p>Tokyo is the capital of Japan.</p>
+		</div>
+	  </div>
+	</div>
+
+	<div id="socketOutlets" class="tab">
+		<h1>Appliances</h1>
+		<p>#Pamoja_Twaimarika</p><br>
+		<div class="mainSupply">
+			<div class="row">
+				<div class="column">
+					<div class="card">
+					<h3 id="SON1"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="SOMV1"></small> V<br>
+							Max Current: <small id="SOMC1"></small> A<br>
+							<input type="hidden" id="SOS1">
+							<br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+								<input id="socketOutletBtnOne" type="checkbox" onclick="initialize('201', 'socketOutletBtnOne')">
+								<span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="SON2"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="SOMV2"></small> V<br>
+							Max Current: <small id="SOMC2"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="socketOutletBtnTwo" type="checkbox" onclick="initialize('202', 'socketOutletBtnTwo')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="SON3"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="SOMV3"></small> V<br>
+							Max Current: <small id="SOMC3"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="socketOutletBtnThree" type="checkbox" onclick="initialize('203', 'socketOutletBtnThree')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="SON4"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="SOMV4"></small> V<br>
+							Max Current: <small id="SOMC4"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="socketOutletBtnFour" type="checkbox" onclick="initialize('204', 'socketOutletBtnFour')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="LStatusBar">
+				<div class="row">
+					<div class="LSColumn">
+						<h4 id="sosh1"></h4>
+						<small>Operating Status</small>: <small id="soos1"></small><br>
+						<p id="sosw" style="display: none;">
+							<small>Operating Voltage</small>: <small id="soov1"></small><br>
+							<small>Operating Current</small>: <small id="sooc1"></small><br>
+							<small>Operating Power</small>: <small id="soop1"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="sosh2"></h4>
+						<small>Operating Status</small>: <small id="soos2"></small><br>
+						<p id="sosw2" style="display: none;">
+							<small>Operating Voltage</small>: <small id="soov2"></small><br>
+							<small>Operating Current</small>: <small id="sooc2"></small><br>
+							<small>Operating Power</small>: <small id="soop2"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="sosh3"></h4>
+						<small>Operating Status</small>: <small id="soos3"></small><br>
+						<p id="sosw3" style="display: none;">
+							<small>Operating Voltage</small>: <small id="soov3"></small><br>
+							<small>Operating Current</small>: <small id="sooc3"></small><br>
+							<small>Operating Power</small>: <small id="soop3"></small><br>
+						</p>
+					</div>
+					<div class="column">
+						<h4 id="sosh4"></h4>
+						<small>Operating Status</small>: <small id="soos4"></small><br>
+						<p id="sosw4" style="display: none;">
+							<small>Operating Voltage</small>: <small id="soov4"></small><br>
+							<small>Operating Current</small>: <small id="sooc4"></small><br>
+							<small>Operating Power</small>: <small id="soop4"></small><br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="light" class="tab">	  
+		<h1>Lighting</h1>
+		<p>#Pamoja_Twaimarika</p><br>
+		<div class="mainSupply">
+			<div class="row">
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN1"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV1"></small> V<br>
+							Max Current: <small id="TLMC1"></small> A<br>
+							<input type="hidden" id="TLS1">
+							<br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+								<input id="thermalBtnOne" type="checkbox" onclick="initialize('201', 'thermalBtnOne')">
+								<span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN2"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV2"></small> V<br>
+							Max Current: <small id="TLMC2"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="thermalBtnTwo" type="checkbox" onclick="initialize('202', 'thermalBtnTwo')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN3"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV3"></small> V<br>
+							Max Current: <small id="TLMC3"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="thermalBtnThree" type="checkbox" onclick="initialize('203', 'thermalBtnThree')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+					<h3 id="TLN4"></h3>
+					<p class="loadOne">
+						<small>
+							Max Voltage: <small id="TLMV4"></small> V<br>
+							Max Current: <small id="TLMC4"></small> A<br><br><hr><br>
+						</small>
+						<div>
+							<label class="switch">
+							  <input id="thermalBtnFour" type="checkbox" onclick="initialize('204', 'thermalBtnFour')">
+							  <span class="slider round"></span>
+							</label>
+						</div>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="LStatusBar">
+				<div class="row">
+					<div class="LSColumn">
+						<h4 id="tlsh1"></h4>
+						<small>Operating Status</small>: <small id="tlos1"></small><br>
+						<p id="tlsw" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov1"></small><br>
+							<small>Operating Current</small>: <small id="tloc1"></small><br>
+							<small>Operating Power</small>: <small id="tlop1"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="tlsh2"></h4>
+						<small>Operating Status</small>: <small id="tlos2"></small><br>
+						<p id="tlsw2" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov2"></small><br>
+							<small>Operating Current</small>: <small id="tloc2"></small><br>
+							<small>Operating Power</small>: <small id="tlop2"></small><br>
+						</p>
+					</div>
+					<div class="LSColumn">
+						<h4 id="tlsh3"></h4>
+						<small>Operating Status</small>: <small id="tlos3"></small><br>
+						<p id="tlsw3" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov3"></small><br>
+							<small>Operating Current</small>: <small id="tloc3"></small><br>
+							<small>Operating Power</small>: <small id="tlop3"></small><br>
+						</p>
+					</div>
+					<div class="column">
+						<h4 id="tlsh4"></h4>
+						<small>Operating Status</small>: <small id="tlos4"></small><br>
+						<p id="tlsw4" style="display: none;">
+							<small>Operating Voltage</small>: <small id="tlov4"></small><br>
+							<small>Operating Current</small>: <small id="tloc4"></small><br>
+							<small>Operating Power</small>: <small id="tlop4"></small><br>
+						</p>
+					</div>
+				</div>
+			</div>
+			<button class="nextBtn">More Lights</button>
+		</div>
+	</div>	
+	<!-- ./Menu -->
+</section>
+<!-- ./Main Content -->
+<div id="alert" class="alert">
+	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	<p><strong id="alertH1"> </strong> <span id="alertP"></span> </p>
+</div>
+<!-- Footer Section -->
+<footer class="footer-menu">
+	<!-- Footer Menu -->
+	<ul>
+		<li class="list" onclick="menuTab('inductiveLoads', this)">
+			<a onclick="menuTab('inductiveLoads', this)">
+				<span class="icon"><i class=""><img src="icon.inductive.ico"></i></i></span>
+				<span class="text"></span>
+			</a>
+		</li>
+		<li class="list" onclick="menuTab('thermalLoads', this)">
+			<a onclick="menuTab('thermalLoads', this)">
+				<span class="icon"><i class=""><img src="icon.thermal.ico"></i></i></span>
+				<span class="text"></span>
+			</a>
+		</li>
+		<li class="list active spin" onclick="menuTab('homeSettings', this)" id="home">
+			<a onclick="menuTab('homeSettings', this)" id="home">
+				<span class="icon"><i class=""><img src="icon.home.ico"></i></span>
+				<span class="text"></span>
+			</a>
+		</li>
+		<li class="list" onclick="menuTab('socketOutlets', this)">
+			<a onclick="menuTab('socketOutlets', this)">
+				<span class="icon"><i class=""><img src="icon.socketOutlet.ico"></i></i></span>
+				<span class="text"></span>
+			</a>
+		</li>
+		<li class="list" onclick="menuTab('light', this)">
+			<a onclick="menuTab('light', this)">
+				<span class="icon"><i class=""><img src="icon.light.ico"></i></i></span>
+				<span class="text"></span>
+			</a>
+		</li>
+		<i class="Indicator"></i>
+	</ul>
+	<!-- ./Footer Menu -->
+</footer>
+<section class="dijitika">
+	<input type="hidden" id="dijitika1">
+	<input type="hidden" id="dijitika2">
+	<input type="hidden" id="dijitika3">
+	<input type="hidden" id="dijitika4">
+	<input type="hidden" id="dijitika5">
+</section>
+<!-- ./Footer Section -->
+<script type="text/javascript" src="dijitika.js"></script>
+<script type="text/javascript" src="intakePoint.js"></script>
+<script type="text/javascript" src="inductiveLoads.js"></script>
+<script type="text/javascript" src="thermalLoads.js"></script>
+<script type="text/javascript" src="socketOutlet.js"></script>
+<script type="text/javascript" src="bootup.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="action.js"></script>
+</section>
 </body>
 </html>
